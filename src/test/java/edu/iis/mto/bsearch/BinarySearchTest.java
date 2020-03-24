@@ -73,4 +73,12 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(NOT_FOUND, searchResult.getPosition());
     }
+
+    @Test
+    void EmptySeqTest()
+    {
+        int key = 0;
+        int [] emptySeq = new int[0];
+        assertThrows(IllegalArgumentException.class, () -> binarySearch.search(key, emptySeq));
+    }
 }
