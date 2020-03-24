@@ -21,7 +21,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void OneElementInSeqKeyIsPresentTest()
+    void oneElementInSeqKeyIsPresentTest()
     {
         int key = 7;
         SearchResult searchResult = binarySearch.search(key, singleSeq);
@@ -30,7 +30,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void OneElementInSeqKeyIsAbsentTest()
+    void oneElementInSeqKeyIsAbsentTest()
     {
         int key = -3;
         SearchResult searchResult = binarySearch.search(key, singleSeq);
@@ -39,7 +39,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void MultipleElementSeqKeyIsPresentAtFirstPositionTest()
+    void multipleElementSeqKeyIsPresentAtFirstPositionTest()
     {
         int key = -23;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
@@ -48,7 +48,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void MultipleElementSeqKeyIsPresentAtLastPositionTest()
+    void multipleElementSeqKeyIsPresentAtLastPositionTest()
     {
         int key = 512;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
@@ -57,7 +57,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void MultipleElementSeqKeyIsPresentAtCentralPositionTest()
+    void multipleElementSeqKeyIsPresentAtCentralPositionTest()
     {
         int key = 25;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
@@ -66,7 +66,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void MultipleElementSeqKeyIsAbsentTest()
+    void multipleElementSeqKeyIsAbsentTest()
     {
         int key = 23;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
@@ -75,7 +75,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void EmptySeqTest()
+    void emptySeqTest()
     {
         int key = 0;
         int [] emptySeq = new int[0];
@@ -83,9 +83,27 @@ class BinarySearchTest {
     }
 
     @Test
-    void NullSeqTest()
+    void nullSeqTest()
     {
         int key = 0;
         assertThrows(NullPointerException.class, () -> binarySearch.search(key, null));
+    }
+
+    @Test
+    void lowerThanMinimumSeqValueTest()
+    {
+        int key = -300;
+        SearchResult searchResult = binarySearch.search(key, multiSeq);
+        assertFalse(searchResult.isFound());
+        assertEquals(NOT_FOUND, searchResult.getPosition());
+    }
+
+    @Test
+    void higherThanMaximumSeqValueTest()
+    {
+        int key = 1002;
+        SearchResult searchResult = binarySearch.search(key, multiSeq);
+        assertFalse(searchResult.isFound());
+        assertEquals(NOT_FOUND, searchResult.getPosition());
     }
 }
