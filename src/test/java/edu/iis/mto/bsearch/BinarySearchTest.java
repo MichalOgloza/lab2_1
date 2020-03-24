@@ -107,15 +107,14 @@ class BinarySearchTest {
         assertEquals(NOT_FOUND, searchResult.getPosition());
     }
 
-    // Result of this test should be failed
     @Test
-    void descendingSeqOrderTestFAILED()
+    void descendingSeqOrderTest()
     {
         int key = -12;
         int [] descSeq = new int[] {97, 43, 21, 5, 4, 0, -3, -12, -60};
         SearchResult searchResult = binarySearch.search(key, descSeq);
-        assertTrue(searchResult.isFound());
-        assertEquals(key, descSeq[searchResult.getPosition()]);
+        assertFalse(searchResult.isFound());
+        assertEquals(NOT_FOUND, searchResult.getPosition());
     }
 
     @Test
@@ -128,7 +127,4 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(centralIndex, searchResult.getPosition());
     }
-
-
-
 }
