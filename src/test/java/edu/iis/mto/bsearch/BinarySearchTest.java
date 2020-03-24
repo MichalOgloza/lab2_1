@@ -118,7 +118,16 @@ class BinarySearchTest {
         assertEquals(key, descSeq[searchResult.getPosition()]);
     }
 
-
+    @Test
+    void duplicatesInSeqTest()
+    {
+        int key = 7;
+        int centralIndex = 3;
+        int [] dupSeq = new int[] {1, 3, 7, 7, 7, 7, 10};
+        SearchResult searchResult = binarySearch.search(key, dupSeq);
+        assertTrue(searchResult.isFound());
+        assertEquals(centralIndex, searchResult.getPosition());
+    }
 
 
 
