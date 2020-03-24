@@ -81,4 +81,11 @@ class BinarySearchTest {
         int [] emptySeq = new int[0];
         assertThrows(IllegalArgumentException.class, () -> binarySearch.search(key, emptySeq));
     }
+
+    @Test
+    void NullSeqTest()
+    {
+        int key = 0;
+        assertThrows(NullPointerException.class, () -> binarySearch.search(key, null));
+    }
 }
