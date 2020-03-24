@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTest {
 
+    private static final int NOT_FOUND = -1;
     private static int [] singleSeq;
     private static int [] multiSeq;
     private static BinarySearch binarySearch;
@@ -34,7 +35,7 @@ class BinarySearchTest {
         int key = 3;
         SearchResult searchResult = binarySearch.search(key, singleSeq);
         assertFalse(searchResult.isFound());
-        assertEquals(-1, searchResult.getPosition());
+        assertEquals(NOT_FOUND, searchResult.getPosition());
     }
 
     @Test
@@ -62,5 +63,14 @@ class BinarySearchTest {
         SearchResult searchResult = binarySearch.search(key, multiSeq);
         assertTrue(searchResult.isFound());
         assertEquals(key, multiSeq[searchResult.getPosition()]);
+    }
+
+    @Test
+    void MultipleElementSeqKeyIsAbsentTest()
+    {
+        int key = 22;
+        SearchResult searchResult = binarySearch.search(key, multiSeq);
+        assertFalse(searchResult.isFound());
+        assertEquals(NOT_FOUND, searchResult.getPosition());
     }
 }
