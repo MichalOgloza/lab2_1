@@ -36,4 +36,15 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    void MultipleElementSeqKeyIsPresentAtFirstPositionTest()
+    {
+        int key = 2;
+        SearchResult searchResult = binarySearch.search(key, multiSeq);
+        assertTrue(searchResult.isFound());
+        assertEquals(key, multiSeq[searchResult.getPosition()]);
+    }
+
+
 }
