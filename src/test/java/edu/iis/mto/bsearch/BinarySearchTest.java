@@ -16,7 +16,7 @@ class BinarySearchTest {
     static void init()
     {
         singleSeq = new int[] {7};
-        multiSeq = new int[] {2, 4, 7, 19, 25, 37, 93, 198, 512};
+        multiSeq = new int[] {-23, -4, 0, 7, 25, 37, 93, 198, 512};
         binarySearch = BinarySearch.create();
     }
 
@@ -32,7 +32,7 @@ class BinarySearchTest {
     @Test
     void OneElementInSeqKeyIsAbsentTest()
     {
-        int key = 3;
+        int key = -3;
         SearchResult searchResult = binarySearch.search(key, singleSeq);
         assertFalse(searchResult.isFound());
         assertEquals(NOT_FOUND, searchResult.getPosition());
@@ -41,7 +41,7 @@ class BinarySearchTest {
     @Test
     void MultipleElementSeqKeyIsPresentAtFirstPositionTest()
     {
-        int key = 2;
+        int key = -23;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
         assertTrue(searchResult.isFound());
         assertEquals(key, multiSeq[searchResult.getPosition()]);
@@ -68,7 +68,7 @@ class BinarySearchTest {
     @Test
     void MultipleElementSeqKeyIsAbsentTest()
     {
-        int key = 22;
+        int key = 23;
         SearchResult searchResult = binarySearch.search(key, multiSeq);
         assertFalse(searchResult.isFound());
         assertEquals(NOT_FOUND, searchResult.getPosition());
