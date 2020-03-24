@@ -1,19 +1,39 @@
 package edu.iis.mto.bsearch;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTest {
 
+    private static int [] singleSeq;
+    private static int [] multiSeq;
+    private static BinarySearch binarySearch;
+
+    @BeforeAll
+    static void init()
+    {
+        singleSeq = new int[] {7};
+        multiSeq = new int[] {2, 4, 7, 19, 25, 37, 93, 198, 512};
+        binarySearch = BinarySearch.create();
+    }
+
     @Test
     void OneElementInSeqKeyIsPresentTest()
     {
         int key = 7;
-        int [] seq = new int[] {7};
-        BinarySearch binarySearch = BinarySearch.create();
-        SearchResult searchResult = binarySearch.search(key, seq);
+        SearchResult searchResult = binarySearch.search(key, singleSeq);
         assertTrue(searchResult.isFound());
-        assertEquals(key, seq[searchResult.getPosition()]);
+        assertEquals(key, singleSeq[searchResult.getPosition()]);
+    }
+
+    @Test
+    void OneElementInSeqKeyIsAbsentTest()
+    {
+        int key = 3;
+        SearchResult searchResult = binarySearch.search(key, singleSeq);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
     }
 }
