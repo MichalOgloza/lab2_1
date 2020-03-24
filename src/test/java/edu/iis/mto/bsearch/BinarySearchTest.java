@@ -55,4 +55,12 @@ class BinarySearchTest {
         assertEquals(key, multiSeq[searchResult.getPosition()]);
     }
 
+    @Test
+    void MultipleElementSeqKeyIsPresentAtCentralPositionTest()
+    {
+        int key = 25;
+        SearchResult searchResult = binarySearch.search(key, multiSeq);
+        assertTrue(searchResult.isFound());
+        assertEquals(key, multiSeq[searchResult.getPosition()]);
+    }
 }
